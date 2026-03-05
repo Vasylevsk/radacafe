@@ -36,6 +36,13 @@ jobs:
 
       - name: Build
         run: npm run build
+        
+      - name: Verify build output
+        run: |
+          echo "Checking built files..."
+          ls -la dist/
+          echo "Checking index.html..."
+          cat dist/index.html | grep -E "(src=|href=)" | head -5
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
