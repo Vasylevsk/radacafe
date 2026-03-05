@@ -20,10 +20,18 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      title: 'RADA COFFEE & EATERY',
+      title: 'RADA COFFEE',
       subtitle: 'Serving Brentford Since 2018 | Halal Brekkie, Brunch & All the Good Stuff',
-      cta: 'Explore Menu',
-      order: 'Order Delivery',
+      cta: 'Menu',
+      order: 'Delivery',
+    },
+    orderModal: {
+      title: 'Order Now',
+      subtitle: 'Choose your preferred delivery platform',
+      ubereats: 'UberEats',
+      ubereatsDesc: 'Order via UberEats',
+      justeat: 'Just Eat',
+      justeatDesc: 'Order via Just Eat',
     },
     about: {
       title: 'About Us',
@@ -78,10 +86,18 @@ export const translations = {
       contact: 'İletişim',
     },
     hero: {
-      title: 'RADA COFFEE & EATERY',
+      title: 'RADA COFFEE',
       subtitle: '2018\'den Beri Brentford\'da Hizmet | Helal Kahvaltı, Brunch ve Tüm İyi Şeyler',
-      cta: 'Menüyü Gör',
-      order: 'Sipariş Ver',
+      cta: 'Menü',
+      order: 'Teslimat',
+    },
+    orderModal: {
+      title: 'Şimdi Sipariş Ver',
+      subtitle: 'Tercih ettiğiniz teslimat platformunu seçin',
+      ubereats: 'UberEats',
+      ubereatsDesc: 'UberEats üzerinden sipariş verin',
+      justeat: 'Just Eat',
+      justeatDesc: 'Just Eat üzerinden sipariş verin',
     },
     about: {
       title: 'Hakkımızda',

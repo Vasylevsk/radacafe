@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { useRef } from 'react';
+import heroVideo from '../assets/hero.mp4';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -22,7 +23,7 @@ const Hero = () => {
   };
 
   const scrollToOrder = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('connect')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -31,7 +32,7 @@ const Hero = () => {
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Premium Parallax Background */}
+      {/* Premium Parallax Background with Video */}
       <motion.div 
         className="absolute inset-0 z-0"
         style={{
@@ -39,22 +40,28 @@ const Hero = () => {
           y,
         }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=2000)',
-          }}
-        />
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ zIndex: 0 }}
+        >
+          <source src={heroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         
-        {/* Sophisticated Multi-layer Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg via-dark-bg/95 to-dark-bg/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/60 via-transparent to-dark-bg/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent" />
+        {/* Sophisticated Multi-layer Overlay - Lighter */}
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/40 via-dark-bg/30 to-dark-bg/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/20 via-transparent to-dark-bg/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/50 via-transparent to-transparent" />
         
         {/* Subtle vignette effect */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-dark-bg/40" 
+        <div className="absolute inset-0" 
           style={{
-            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 10, 0.4) 100%)'
+            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 10, 0.2) 100%)'
           }}
         />
       </motion.div>
@@ -107,12 +114,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-serif font-bold mb-8 text-white text-center leading-[0.85] tracking-[-0.02em]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold mb-6 text-white text-center leading-[0.9] tracking-[-0.02em]"
           >
-            <span className="block mb-2">{t.hero.title.split('&')[0].trim()}</span>
             <span className="block text-accent relative inline-block">
-              {t.hero.title.includes('&') ? '&' : ''}
-              {t.hero.title.split('&')[1]?.trim() || ''}
+              {t.hero.title}
               <motion.span
                 className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent"
                 initial={{ scaleX: 0 }}
@@ -127,12 +132,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 font-light leading-relaxed mb-4 tracking-wide">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-light leading-relaxed mb-3 tracking-wide">
               {t.hero.subtitle.split('|')[0]}
             </p>
-            <p className="text-lg sm:text-xl md:text-2xl text-accent/90 font-light italic">
+            <p className="text-sm sm:text-base md:text-lg text-accent/90 font-light italic">
               {t.hero.subtitle.split('|')[1]}
             </p>
           </motion.div>
@@ -144,28 +149,27 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
-            <motion.button
-              onClick={scrollToMenu}
-              className="group relative px-12 py-6 bg-accent text-dark-bg font-semibold rounded-full flex items-center gap-3 text-lg sm:text-xl overflow-hidden shadow-2xl"
-              style={{
-                boxShadow: '0 20px 60px rgba(132, 155, 69, 0.4), 0 0 0 1px rgba(132, 155, 69, 0.2)',
-              }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -3,
-                boxShadow: '0 25px 70px rgba(132, 155, 69, 0.5), 0 0 0 1px rgba(132, 155, 69, 0.3)',
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10 font-medium">{t.hero.cta}</span>
-              <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-              <motion.div
-                className="absolute inset-0 bg-white/30 rounded-full"
-                initial={{ scale: 0, opacity: 0 }}
-                whileHover={{ scale: 1.5, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              />
-            </motion.button>
+          <motion.button
+            onClick={scrollToMenu}
+            className="group relative px-12 py-6 bg-accent text-dark-bg font-semibold rounded-full text-lg sm:text-xl overflow-hidden shadow-2xl"
+            style={{
+              boxShadow: '0 20px 60px rgba(132, 155, 69, 0.4), 0 0 0 1px rgba(132, 155, 69, 0.2)',
+            }}
+            whileHover={{ 
+              scale: 1.05, 
+              y: -3,
+              boxShadow: '0 25px 70px rgba(132, 155, 69, 0.5), 0 0 0 1px rgba(132, 155, 69, 0.3)',
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10 font-medium">{t.hero.cta}</span>
+            <motion.div
+              className="absolute inset-0 bg-white/30 rounded-full"
+              initial={{ scale: 0, opacity: 0 }}
+              whileHover={{ scale: 1.5, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+          </motion.button>
 
             <motion.button
               onClick={scrollToOrder}
